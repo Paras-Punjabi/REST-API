@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing RestApi</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .container {
+        height: 500px;
+        width: 60vw;
+        margin: auto;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JSON Response</h1>
+    <div class="container"></div>
+  </body>
+  <script>
+
+    let url = "http://localhost:8000/";
+    let container = document.querySelector(".container");
+
+    // POST request
+    
+    // let data ={
+    //     name : "PP",
+    //     age : 20,
+    //     passion : "Basketball",
+    //     status : false
+    // }
+
+    let params = {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    //   body : JSON.stringify(data)
+    };
+
+    fetch(url, params)
+      .then((req) => {
+        return req.json();
+      })
+      .then((data) => {
+        console.log(data);
+        container.innerHTML = JSON.stringify(data);
+      });
+  </script>
+</html>
